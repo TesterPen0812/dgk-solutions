@@ -51,6 +51,10 @@ export default {
           foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
           border: "var(--destructive-border)",
         },
+        emergency: {
+          DEFAULT: "hsl(var(--emergency) / <alpha-value>)",
+          foreground: "hsl(var(--emergency-foreground) / <alpha-value>)",
+        },
         ring: "hsl(var(--ring) / <alpha-value>)",
         chart: {
           "1": "hsl(var(--chart-1) / <alpha-value>)",
@@ -83,9 +87,10 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
+        sans: ["'DM Sans'", "var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
+        heading: ["'Outfit'", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
