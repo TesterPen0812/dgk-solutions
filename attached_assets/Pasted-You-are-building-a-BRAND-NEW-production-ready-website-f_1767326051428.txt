@@ -1,0 +1,246 @@
+You are building a BRAND-NEW, production-ready website from scratch for a real UK trade client.
+
+This is NOT a demo, NOT a mockup, and NOT a portfolio site.
+It must be accurate, trustworthy, SEO-friendly, mobile-first, and conversion-focused for emergency plumbing and drainage work.
+
+════════════════════════════════════
+BUSINESS INFORMATION (USE EXACTLY — DO NOT INVENT)
+════════════════════════════════════
+Company name:
+DGK Solutions Ltd
+
+Established:
+Trading for 2 years
+
+Experience:
+30+ years combined industry experience
+
+Team:
+- Dean – Director & Senior Plumbing and Drainage Engineer (18 years experience, domestic + commercial)
+- Duncan – Lead Engineer (field operations, CCTV surveys, drain repairs, emergency response)
+- Office & Finance Manager (bookings, customer communications, invoicing, scheduling)
+
+Planned growth:
+- Intends to hire another engineer within the next few months depending on workload
+
+Services:
+Plumbing & Emergency:
+- Plumbing and drainage
+- Emergency plumbing
+- Leaking, dripping and burst pipes
+- 24/7 emergency call-outs, 365 days a year
+
+Drainage:
+- Drainage services (domestic & commercial)
+- Drain clearing and inspection
+- Sink unblocking
+- Toilet unblocking
+- Bath unblocking
+- CCTV drain surveys
+- HPWJ jetting
+
+Drain Repairs:
+- No-dig drain repairs
+- Drain lining
+- Patch repairs
+- Traditional excavations
+
+Tanker & Waste:
+- Tanker services for liquid waste removal
+- Septic tank emptying
+- Grease trap maintenance
+
+Certifications:
+- HPWJ Jetting Certs
+- NVQ Level 3 Plumbing
+- PASMA
+- IPAF
+- SSSTS
+- STREETWORKS (NRSWA)
+
+Sectors served:
+- Homeowners
+- Managing agents
+- Businesses
+- Restaurants
+- Schools
+- Universities
+- Retail outlets
+- Offices
+- Hospitals
+- Houses
+- Management properties
+- Apartment buildings
+- Gyms
+
+Service areas:
+- Based in Essex
+- Covers the M25 radius
+- Also covers Cambridge and Luton
+- Additional travel costs apply outside these areas
+
+DO NOT:
+- Invent reviews, ratings, response times, insurance claims, addresses, or phone numbers.
+- Use phrases like “trusted by thousands”, “30-minute response”, or fake testimonials.
+
+════════════════════════════════════
+TECH STACK (CHOOSE ONE)
+════════════════════════════════════
+Preferred:
+Option A — Plain HTML, CSS, and minimal JavaScript
+- Multi-page structure (separate HTML files)
+- Shared header/footer reused consistently
+- No frameworks unless necessary
+
+If you choose a framework, keep it extremely simple and explain setup clearly.
+
+════════════════════════════════════
+THEME & VISUAL DESIGN (APPLY SITE-WIDE)
+════════════════════════════════════
+Color palette (CSS variables):
+- --primary: Professional Blue (trust, expertise)
+- --accent: Emergency Red (ONLY for emergency banners and primary “Call Now” CTAs)
+- Neutral background, text, border colours for clarity and contrast
+
+Typography:
+- Headings (H1–H3, hero text): Outfit
+- Body text, nav, forms: DM Sans
+- Consistent type scale across the site
+
+Visual style:
+- Modern “glass-card” aesthetic:
+  - subtle backdrop blur
+  - soft gradients
+  - light borders and shadows
+  - rounded corners
+- Use glass cards for:
+  - trust blocks
+  - service cards
+  - booking form container
+  - key content sections
+
+Design must feel:
+- Professional
+- Reassuring
+- Emergency-ready
+- Not overly corporate or tech-startup-like
+
+════════════════════════════════════
+HOMEPAGE HERO (VERY IMPORTANT)
+════════════════════════════════════
+The Home page hero must visually match this style:
+- Clean, modern, high-conversion layout
+- Two-column layout on desktop, stacked on mobile
+
+Left side:
+- Small pill/badge: “Available 24/7 for Emergencies”
+- Strong headline focused on problems solved (plumbing & drainage)
+- Supporting text mentioning:
+  - Essex
+  - M25 radius
+  - Cambridge
+  - Luton
+  - 30+ years combined experience
+- Two CTAs:
+  1) Call Now (Emergency Red)
+  2) Book Online (secondary)
+- Small trust row using ONLY real facts
+
+Right side:
+- Neutral, professional hero image or illustration
+- NO fake people, NO fake claims, NO testimonials
+
+════════════════════════════════════
+NON-NEGOTIABLE CONVERSION UX
+════════════════════════════════════
+1) Sticky Mobile CTA Bar (ALL pages):
+   - Primary: Call Now (tel:+44XXXXXXXXXX placeholder)
+   - Secondary: Book Online
+   - Must never cover content
+
+2) Emergency Banner (ALL pages):
+   - Text: “24/7 Emergency Call-Outs • 365 Days a Year”
+   - Subtext: “Plumbing, Drainage & Tanker Services”
+   - Use Emergency Red
+   - Slight attention animation ONCE on load (optional, subtle)
+
+3) “Call Now” must always be the most visually dominant action.
+
+════════════════════════════════════
+PAGES TO BUILD
+════════════════════════════════════
+1) Home
+2) Services (overview)
+3) Emergency
+4) Drainage
+5) Drain Repairs
+6) Tanker & Waste
+7) Sectors Served
+8) Areas Covered
+9) About
+10) Contact / Book Online
+
+Optional:
+- FAQ (emergencies, CCTV surveys, commercial work)
+
+════════════════════════════════════
+BOOKING FORM (REAL & USABLE)
+════════════════════════════════════
+Fields:
+1) Full Name (required)
+2) Phone Number (required)
+3) Email (optional)
+4) Postcode (required)
+5) Address line (optional)
+6) Service Needed (dropdown)
+7) Emergency? (yes/no)
+8) Preferred date & time (calendar + time selector)
+9) Description of issue (required)
+10) Photo upload (optional)
+11) Hidden honeypot field (anti-spam)
+
+Important:
+- Clearly label date/time as “Preferred – subject to confirmation”
+- Do NOT imply guaranteed slots or response times
+
+Submission handling:
+- If static site: include placeholder Formspree/Netlify endpoint with comments explaining where to connect email/Google Sheets later
+- Show a clear success state after submission
+
+════════════════════════════════════
+SEO REQUIREMENTS
+════════════════════════════════════
+- Each page:
+  - Unique <title> and meta description
+  - Exactly one H1
+  - Logical H2/H3 hierarchy
+- Include:
+  - sitemap.xml
+  - robots.txt
+- Add LocalBusiness JSON-LD:
+  - Name: DGK Solutions Ltd
+  - Area served: Essex, M25 radius, Cambridge, Luton
+  - Services list (as provided)
+  - Telephone: placeholder if not provided
+  - NO street address if not provided
+
+════════════════════════════════════
+ANIMATIONS (OPTIONAL BUT PROFESSIONAL)
+════════════════════════════════════
+- Subtle, fast, and purposeful
+- CSS-first
+- Respect prefers-reduced-motion
+- Examples:
+  - Section fade/slide-in on scroll
+  - Button hover/tap feedback
+  - Mobile menu open/close
+  - Form validation and success states
+
+════════════════════════════════════
+FINAL DELIVERABLE
+════════════════════════════════════
+- Output the complete project structure and code
+- Ensure all links, buttons, forms, and navigation work
+- Mobile-first, no horizontal scrolling
+- Clean, professional, trade-appropriate tone
+- Include brief instructions on how to run and deploy in Replit
