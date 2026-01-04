@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 
-const BASE_URL = "https://dgksolutions.ltd";
+const BASE_URL = "https://dgksolutions.org";
 
 export function StructuredData() {
   const [location] = useLocation();
@@ -26,7 +26,7 @@ export function StructuredData() {
         "+441708961700",
         "+44708961700"
       ],
-      "email": "info@dgksolutions.ltd",
+      "email": "info@dgksolutions.org",
       "address": {
         "@type": "PostalAddress",
         "addressRegion": "Essex",

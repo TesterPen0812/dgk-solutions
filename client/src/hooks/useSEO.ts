@@ -8,7 +8,7 @@ interface SEOProps {
   type?: string;
 }
 
-const BASE_URL = "https://dgksolutions.ltd";
+const BASE_URL = "https://dgksolutions.org";
 
 export function useSEO({ title, description, image = "/DGK.png", type = "website" }: SEOProps) {
   const [location] = useLocation();

@@ -98,7 +98,7 @@ export default function Contact() {
                   <ul className="space-y-4">
                     {[
                       { icon: Phone, label: "Phone", value: "01708 961700", href: OFFICE_TEL },
-                      { icon: Mail, label: "Email", value: "info@dgksolutions.ltd", href: "mailto:info@dgksolutions.ltd" },
+                      { icon: Mail, label: "Email", value: "info@dgksolutions.org", href: "mailto:info@dgksolutions.org" },
                       { icon: MapPin, label: "Location", value: "Based in Essex, UK" },
                       { icon: Clock, label: "Availability", value: "24/7 Emergency Service", value2: "365 Days a Year" },
                     ].map((item, index) => (

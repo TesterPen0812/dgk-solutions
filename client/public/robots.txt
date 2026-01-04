@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dgksolutions.ltd/sitemap.xml
+Sitemap: https://dgksolutions.org/sitemap.xml

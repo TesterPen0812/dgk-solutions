@@ -75,5 +75,5 @@ The workflow runs `npm run dev` which starts both the Express backend and Vite f
 ## Notes for Future Development
 - The booking form uses in-memory storage - connect to a real database for production
 - Phone numbers are placeholders (tel:+44XXXXXXXXXX) - replace with actual numbers
-- Email is placeholder (info@dgksolutions.ltd) - verify actual email
+- Email is placeholder (info@dgksolutions.org) - verify actual email
 - Consider adding Formspree/Netlify Forms for email notifications
