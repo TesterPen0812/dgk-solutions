@@ -8,6 +8,18 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+  // 301 Permanent Redirect from OLD_DOMAIN (dgksolutions.ltd) to NEW_DOMAIN (dgksolutions.org)
+  app.use((req, res, next) => {
+    const host = req.get("host");
+    const OLD_DOMAIN = "dgksolutions.ltd";
+    const NEW_DOMAIN = "dgksolutions.org";
+
+    if (host && (host === OLD_DOMAIN || host === `www.${OLD_DOMAIN}`)) {
+      return res.redirect(301, `https://${NEW_DOMAIN}${req.originalUrl}`);
+    }
+    next();
+  });
+
   app.post("/api/bookings", async (req, res) => {
     try {
       const validatedData = insertBookingSchema.parse(req.body);
