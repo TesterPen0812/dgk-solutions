@@ -125,8 +125,8 @@ export function Footer() {
                   className="flex items-start gap-2"
                 >
                   <Mail className="w-4 h-4 mt-0.5 text-primary" />
-                  <a href="mailto:info@dgksolutions.co.uk" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    info@dgksolutions.co.uk
+                  <a href="mailto:info@dgksolutions.ltd" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    info@dgksolutions.ltd
                   </a>
                 </motion.li>
                 <motion.li 

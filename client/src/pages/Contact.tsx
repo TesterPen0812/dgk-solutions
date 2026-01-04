@@ -99,7 +99,7 @@ export default function Contact() {
                     {[
                       { icon: Phone, label: "Office", value: "01708 961700", href: OFFICE_TEL },
                       { icon: Phone, label: "Emergency / Mobile", value: "07089 61700", href: EMERGENCY_TEL },
-                      { icon: Mail, label: "Email", value: "info@dgksolutions.co.uk", href: "mailto:info@dgksolutions.co.uk" },
+                      { icon: Mail, label: "Email", value: "info@dgksolutions.ltd", href: "mailto:info@dgksolutions.ltd" },
                       { icon: MapPin, label: "Location", value: "Based in Essex, UK" },
                       { icon: Clock, label: "Availability", value: "24/7 Emergency Service", value2: "365 Days a Year" },
                     ].map((item, index) => (
