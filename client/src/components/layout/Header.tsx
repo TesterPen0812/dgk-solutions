@@ -19,26 +19,11 @@ const navItems = [
     label: "Services",
     children: [
       { href: "/services", label: "All Services" },
-      { 
-        category: "Emergency",
-        links: [{ href: "/emergency", label: "24/7 Emergency Service" }]
-      },
-      {
-        category: "Plumbing Repairs",
-        links: [{ href: "/plumbing-repairs", label: "General Plumbing" }]
-      },
-      {
-        category: "Drainage",
-        links: [{ href: "/drainage", label: "Drainage & CCTV" }]
-      },
-      {
-        category: "Drain Repairs",
-        links: [{ href: "/drain-repairs", label: "No-Dig & Lining" }]
-      },
-      {
-        category: "Tanker & Waste",
-        links: [{ href: "/tanker-waste", label: "Septic Tanks & Waste" }]
-      }
+      { href: "/emergency", label: "Emergency" },
+      { href: "/plumbing-repairs", label: "Plumbing Repairs" },
+      { href: "/drainage", label: "Drainage" },
+      { href: "/drain-repairs", label: "Drain Repairs" },
+      { href: "/tanker-waste", label: "Tanker & Waste" },
     ],
   },
   { href: "/sectors-served", label: "Sectors" },
@@ -92,29 +77,14 @@ export function Header() {
                         <ChevronDown className="w-[3.68] h-[3.68]" />
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="start" className="w-56 [&_a]:text-[0.95rem] [&_span]:text-[0.95rem] [&_svg]:w-[4.6] [&_svg]:h-[4.6]">
-                      {item.children.map((child: any) => 
-                        child.category ? (
-                          <div key={child.category} className="px-2 py-1.5">
-                            <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider block mb-1">
-                              {child.category}
-                            </span>
-                            {child.links.map((link: any) => (
-                              <DropdownMenuItem key={link.href} asChild>
-                                <Link href={link.href} data-testid={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                                  {link.label}
-                                </Link>
-                              </DropdownMenuItem>
-                            ))}
-                          </div>
-                        ) : (
-                          <DropdownMenuItem key={child.href} asChild>
-                            <Link href={child.href} data-testid={`nav-${child.label.toLowerCase().replace(/\s+/g, '-')}`}>
-                              {child.label}
-                            </Link>
-                          </DropdownMenuItem>
-                        )
-                      )}
+                    <DropdownMenuContent align="start" className="[&_a]:text-[1.00625rem] [&_span]:text-[1.00625rem] [&_svg]:w-[4.6] [&_svg]:h-[4.6]">
+                      {item.children.map((child) => (
+                        <DropdownMenuItem key={child.href} asChild>
+                          <Link href={child.href} data-testid={`nav-${child.label.toLowerCase().replace(/\s+/g, '-')}`}>
+                            {child.label}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </motion.div>
@@ -177,57 +147,28 @@ export function Header() {
                       transition={{ delay: index * 0.05, duration: 0.3 }}
                       className="space-y-1 sm:space-y-1.5"
                     >
-                      <span className="block px-4 py-2 sm:px-5 sm:py-2.5 text-sm sm:text-base font-bold text-foreground">
+                      <span className="block px-4 py-2 sm:px-5 sm:py-2.5 text-sm sm:text-base font-medium text-muted-foreground">
                         {item.label}
                       </span>
-                      <div className="space-y-4 px-4 sm:px-5">
-                        {item.children.map((child: any, childIndex) => 
-                          child.category ? (
-                            <div key={child.category} className="space-y-1 bg-muted/30 rounded-lg p-3 sm:p-4">
-                              <span className="block text-xs font-bold text-primary uppercase tracking-wider mb-2">
-                                {child.category}
-                              </span>
-                              {child.links.map((link: any, linkIndex: number) => (
-                                <motion.div
-                                  key={link.href}
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: (index * 0.05) + (childIndex * 0.03) + (linkIndex * 0.02) + 0.1, duration: 0.3 }}
-                                >
-                                  <Link href={link.href}>
-                                    <Button
-                                      variant={location === link.href ? "secondary" : "ghost"}
-                                      className="w-full justify-start h-auto py-2 px-2 text-sm sm:text-base shadow-none active:shadow-none"
-                                      onClick={() => setMobileMenuOpen(false)}
-                                      data-testid={`mobile-nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-                                    >
-                                      {link.label}
-                                    </Button>
-                                  </Link>
-                                </motion.div>
-                              ))}
-                            </div>
-                          ) : (
-                            <motion.div
-                              key={child.href}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: (index * 0.05) + (childIndex * 0.03) + 0.1, duration: 0.3 }}
+                      {item.children.map((child, childIndex) => (
+                        <motion.div
+                          key={child.href}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: (index * 0.05) + (childIndex * 0.03) + 0.1, duration: 0.3 }}
+                        >
+                          <Link href={child.href}>
+                            <Button
+                              variant={location === child.href ? "secondary" : "ghost"}
+                              className="w-full justify-start pl-6 sm:pl-8 min-h-9 sm:min-h-10 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base shadow-none active:shadow-none"
+                              onClick={() => setMobileMenuOpen(false)}
+                              data-testid={`mobile-nav-${child.label.toLowerCase().replace(/\s+/g, '-')}`}
                             >
-                              <Link href={child.href}>
-                                <Button
-                                  variant={location === child.href ? "secondary" : "ghost"}
-                                  className="w-full justify-start h-auto py-2 px-2 text-sm sm:text-base font-medium shadow-none active:shadow-none"
-                                  onClick={() => setMobileMenuOpen(false)}
-                                  data-testid={`mobile-nav-${child.label.toLowerCase().replace(/\s+/g, '-')}`}
-                                >
-                                  {child.label}
-                                </Button>
-                              </Link>
-                            </motion.div>
-                          )
-                        )}
-                      </div>
+                              {child.label}
+                            </Button>
+                          </Link>
+                        </motion.div>
+                      ))}
                     </motion.div>
                   ) : (
                     <motion.div
