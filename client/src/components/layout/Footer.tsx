@@ -1,89 +1,177 @@
 import { Link } from "wouter";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { certifications } from "@shared/schema";
+import { motion } from "framer-motion";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { EMERGENCY_TEL, OFFICE_TEL } from "@/components/CallNumbers";
+import { useTheme } from "@/components/ThemeProvider";
 
 export function Footer() {
+  const prefersReducedMotion = useReducedMotion();
+  const { theme } = useTheme();
+
   return (
-    <footer className="bg-card border-t border-border mt-auto">
+    <motion.footer 
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false, amount: 0.2 }}
+      transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
+      className="bg-card border-t border-border mt-auto"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center">
-                <span className="text-primary-foreground font-heading font-bold text-lg">DGK</span>
-              </div>
-              <div>
-                <span className="font-heading font-bold text-lg text-foreground">DGK Solutions</span>
-                <span className="text-xs text-muted-foreground block -mt-1">Ltd</span>
+          <ScrollReveal delay={0}>
+            <div>
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center mb-4"
+              >
+                <img 
+                  src={theme === "dark" ? "/DGK_white.png" : "/DGK.png"} 
+                  alt="DGK Solutions"
+                  className="h-32 w-auto"
+                />
+              </motion.div>
+              <p className="text-sm text-muted-foreground mb-4">
+                Professional plumbing, drainage, and tanker services across Essex, M25 radius, Cambridge, and Luton.
+              </p>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Clock className="w-4 h-4" />
+                <span>24/7 Emergency Service</span>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground mb-4">
-              Professional plumbing, drainage, and tanker services across Essex, M25 radius, Cambridge, and Luton.
-            </p>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Clock className="w-4 h-4" />
-              <span>24/7 Emergency Service</span>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div>
+              <h3 className="font-heading font-semibold text-foreground mb-4">Services</h3>
+              <ul className="space-y-2">
+                {[
+                  { href: "/emergency", label: "Emergency Plumbing" },
+                  { href: "/drainage", label: "Drainage Services" },
+                  { href: "/drain-repairs", label: "Drain Repairs" },
+                  { href: "/tanker-waste", label: "Tanker & Waste" },
+                  { href: "/services", label: "All Services" },
+                ].map((link, index) => (
+                  <motion.li
+                    key={link.href}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false, amount: 0.1 }}
+                    transition={{ delay: prefersReducedMotion ? 0 : 0.1 + index * 0.05, duration: prefersReducedMotion ? 0 : 0.3 }}
+                  >
+                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
             </div>
-          </div>
+          </ScrollReveal>
 
-          <div>
-            <h3 className="font-heading font-semibold text-foreground mb-4">Services</h3>
-            <ul className="space-y-2">
-              <li><Link href="/emergency" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Emergency Plumbing</Link></li>
-              <li><Link href="/drainage" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Drainage Services</Link></li>
-              <li><Link href="/drain-repairs" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Drain Repairs</Link></li>
-              <li><Link href="/tanker-waste" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Tanker & Waste</Link></li>
-              <li><Link href="/services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">All Services</Link></li>
-            </ul>
-          </div>
+          <ScrollReveal delay={0.2}>
+            <div>
+              <h3 className="font-heading font-semibold text-foreground mb-4">Company</h3>
+              <ul className="space-y-2">
+                {[
+                  { href: "/about", label: "About Us" },
+                  { href: "/sectors-served", label: "Sectors We Serve" },
+                  { href: "/areas-covered", label: "Areas Covered" },
+                  { href: "/contact", label: "Contact Us" },
+                ].map((link, index) => (
+                  <motion.li
+                    key={link.href}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 + index * 0.05, duration: 0.3 }}
+                  >
+                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
 
-          <div>
-            <h3 className="font-heading font-semibold text-foreground mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li><Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">About Us</Link></li>
-              <li><Link href="/sectors-served" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Sectors We Serve</Link></li>
-              <li><Link href="/areas-covered" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Areas Covered</Link></li>
-              <li><Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact Us</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-heading font-semibold text-foreground mb-4">Contact</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-2">
-                <Phone className="w-4 h-4 mt-0.5 text-primary" />
-                <a href="tel:+44XXXXXXXXXX" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Call for Enquiries
+          <ScrollReveal delay={0.3}>
+            <div>
+              <h3 className="font-heading font-semibold text-foreground mb-4">Contact</h3>
+              <ul className="space-y-3">
+                <motion.li 
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: false, amount: 0.1 }}
+                  transition={{ delay: prefersReducedMotion ? 0 : 0.3, duration: prefersReducedMotion ? 0 : 0.3 }}
+                  className="flex items-start gap-2"
+                >
+                  <Phone className="w-4 h-4 mt-0.5 text-primary" />
+              <div className="flex flex-col">
+                <a href={OFFICE_TEL} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  Office / General: 01708 961700
                 </a>
-              </li>
-              <li className="flex items-start gap-2">
-                <Mail className="w-4 h-4 mt-0.5 text-primary" />
-                <a href="mailto:info@dgksolutions.co.uk" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  info@dgksolutions.co.uk
+                <a href={EMERGENCY_TEL} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  Emergency / Mobile: 07089 61700
                 </a>
-              </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 mt-0.5 text-primary" />
-                <span className="text-sm text-muted-foreground">Based in Essex, UK</span>
-              </li>
-            </ul>
-          </div>
+              </div>
+                </motion.li>
+                <motion.li 
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: false, amount: 0.1 }}
+                  transition={{ delay: prefersReducedMotion ? 0 : 0.35, duration: prefersReducedMotion ? 0 : 0.3 }}
+                  className="flex items-start gap-2"
+                >
+                  <Mail className="w-4 h-4 mt-0.5 text-primary" />
+                  <a href="mailto:info@dgksolutions.co.uk" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    info@dgksolutions.co.uk
+                  </a>
+                </motion.li>
+                <motion.li 
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: false, amount: 0.1 }}
+                  transition={{ delay: prefersReducedMotion ? 0 : 0.4, duration: prefersReducedMotion ? 0 : 0.3 }}
+                  className="flex items-start gap-2"
+                >
+                  <MapPin className="w-4 h-4 mt-0.5 text-primary" />
+                  <span className="text-sm text-muted-foreground">Based in Essex, UK</span>
+                </motion.li>
+              </ul>
+            </div>
+          </ScrollReveal>
         </div>
 
-        <div className="border-t border-border mt-8 pt-8">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false, amount: 0.1 }}
+          transition={{ delay: prefersReducedMotion ? 0 : 0.4, duration: prefersReducedMotion ? 0 : 0.6 }}
+          className="border-t border-border mt-8 pt-8"
+        >
           <div className="flex flex-wrap gap-2 mb-4">
-            {certifications.map((cert) => (
-              <span key={cert} className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded">
+            {certifications.map((cert, index) => (
+              <motion.span
+                key={cert}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: false, amount: 0.1 }}
+                transition={{ delay: prefersReducedMotion ? 0 : 0.4 + index * 0.05, duration: prefersReducedMotion ? 0 : 0.3 }}
+                whileHover={prefersReducedMotion ? {} : { scale: 1.1 }}
+                className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded"
+              >
                 {cert}
-              </span>
+              </motion.span>
             ))}
           </div>
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
             <p>&copy; {new Date().getFullYear()} DGK Solutions Ltd. All rights reserved.</p>
             <p>Trading for 2 years | 30+ years combined experience</p>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

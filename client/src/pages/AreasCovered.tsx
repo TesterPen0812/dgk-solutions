@@ -10,6 +10,16 @@ import {
   CheckCircle,
   AlertCircle,
 } from "lucide-react";
+import { BookOnlineLink } from "@/components/BookOnlineLink";
+import { CallButton } from "@/components/CallButton";
+import { OFFICE_TEL } from "@/components/CallNumbers";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { StaggerContainer } from "@/components/animations/StaggerContainer";
+import { StaggerItem } from "@/components/animations/StaggerItem";
+import { HoverScale } from "@/components/animations/HoverScale";
+import { SlideIn } from "@/components/animations/SlideIn";
+import { FadeIn } from "@/components/animations/FadeIn";
+import { motion } from "framer-motion";
 
 const areaDetails = [
   {
@@ -73,123 +83,134 @@ const londonAreas = [
 
 export default function AreasCovered() {
   useSEO({
-    title: "Areas We Cover",
-    description: "Plumbing and drainage services across Essex, M25 radius, Cambridge, and Luton. Based in Essex with wide coverage.",
+    title: "Service Areas - Essex, London, Cambridge & Luton Coverage",
+    description: "Plumbing and drainage services across Essex, M25 radius, Cambridge, and Luton. Based in Essex with wide coverage. Fast response times in core areas.",
   });
 
   return (
     <div data-testid="page-areas-covered">
-      <section className="bg-gradient-to-br from-primary/10 via-background to-background py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6">
-              <MapPin className="w-10 h-10 text-primary" />
-              <span className="font-heading text-lg font-semibold text-primary">Areas We Cover</span>
-            </div>
-
-            <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              Service Coverage Areas
-            </h1>
-
-            <p className="text-lg text-muted-foreground mb-8">
-              Based in Essex, DGK Solutions provides plumbing, drainage, and waste management services
-              across a wide area including the M25 radius, Cambridge, and Luton.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href="tel:+44XXXXXXXXXX">
-                <Button className="bg-emergency text-emergency-foreground gap-2" data-testid="button-call-areas">
-                  <Phone className="w-4 h-4" />
-                  Call Now
-                </Button>
-              </a>
-              <Link href="/contact">
-                <Button variant="outline" className="gap-2" data-testid="button-book-areas">
-                  <Calendar className="w-4 h-4" />
-                  Check Availability
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Our Coverage Areas
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              We provide services across these main regions. Contact us to confirm coverage for your specific location.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {areaDetails.map((area) => (
-              <GlassCard
-                key={area.name}
-                className={`p-6 ${area.highlight ? 'border-primary/30 bg-primary/5' : ''}`}
-              >
-                <MapPin className={`w-10 h-10 mb-4 ${area.highlight ? 'text-primary' : 'text-muted-foreground'}`} />
-                <h3 className="font-heading text-xl font-semibold text-foreground mb-2">
-                  {area.name}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-3">{area.description}</p>
-                <p className="text-xs text-muted-foreground">{area.coverage}</p>
-              </GlassCard>
-            ))}
-          </div>
-
-          <GlassCard className="p-6 flex items-start gap-4 bg-muted/50">
-            <AlertCircle className="w-6 h-6 text-muted-foreground flex-shrink-0 mt-0.5" />
-            <div>
-              <h3 className="font-semibold text-foreground mb-1">Additional Travel Costs</h3>
-              <p className="text-sm text-muted-foreground">
-                Additional travel costs may apply for locations outside our core service areas.
-                Please contact us for a quote specific to your location.
-              </p>
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <SlideIn delay={0.1}>
+                <h1 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-4">
+                  Our Coverage Areas
+                </h1>
+              </SlideIn>
+              <FadeIn delay={0.2}>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  We provide services across these main regions. Contact us to confirm coverage for your specific location.
+                </p>
+              </FadeIn>
             </div>
-          </GlassCard>
+          </ScrollReveal>
+
+          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" staggerDelay={0.1} triggerOnScroll>
+            {areaDetails.map((area) => (
+              <StaggerItem key={area.name}>
+                <HoverScale>
+                  <GlassCard
+                    className={`p-6 ${area.highlight ? 'border-primary/30 bg-primary/5' : ''}`}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.2, rotate: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <MapPin className={`w-10 h-10 mb-4 ${area.highlight ? 'text-primary' : 'text-muted-foreground'}`} />
+                    </motion.div>
+                    <h3 className="font-heading text-xl font-semibold text-foreground mb-2">
+                      {area.name}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-3">{area.description}</p>
+                    <p className="text-xs text-muted-foreground">{area.coverage}</p>
+                  </GlassCard>
+                </HoverScale>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          <ScrollReveal delay={0.3}>
+            <HoverScale>
+              <GlassCard className="p-6 flex items-start gap-4 bg-muted/50">
+                <AlertCircle className="w-6 h-6 text-muted-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">Additional Travel Costs</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Additional travel costs may apply for locations outside our core service areas.
+                    Please contact us for a quote specific to your location.
+                  </p>
+                </div>
+              </GlassCard>
+            </HoverScale>
+          </ScrollReveal>
         </div>
       </section>
 
       <section className="py-16 lg:py-24 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-6">
-                Essex Coverage
-              </h2>
-              <p className="text-muted-foreground mb-6">
-                As our home county, we provide comprehensive coverage across Essex with the fastest response times.
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {essexAreas.map((area) => (
-                  <div key={area} className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{area}</span>
-                  </div>
-                ))}
+            <ScrollReveal>
+              <div>
+                <SlideIn delay={0.1}>
+                  <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-6">
+                    Essex Coverage
+                  </h2>
+                </SlideIn>
+                <FadeIn delay={0.2}>
+                  <p className="text-muted-foreground mb-6">
+                    As our home county, we provide comprehensive coverage across Essex with the fastest response times.
+                  </p>
+                </FadeIn>
+                <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 gap-3" staggerDelay={0.03} triggerOnScroll>
+                  {essexAreas.map((area) => (
+                    <StaggerItem key={area}>
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0.1 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex items-center gap-2"
+                      >
+                        <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">{area}</span>
+                      </motion.div>
+                    </StaggerItem>
+                  ))}
+                </StaggerContainer>
               </div>
-            </div>
+            </ScrollReveal>
 
-            <div>
-              <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-6">
-                London Coverage
-              </h2>
-              <p className="text-muted-foreground mb-6">
-                We cover areas within the M25, particularly North and East London boroughs.
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {londonAreas.map((area) => (
-                  <div key={area} className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{area}</span>
-                  </div>
-                ))}
+            <ScrollReveal delay={0.2}>
+              <div>
+                <SlideIn delay={0.1}>
+                  <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-6">
+                    London Coverage
+                  </h2>
+                </SlideIn>
+                <FadeIn delay={0.2}>
+                  <p className="text-muted-foreground mb-6">
+                    We cover areas within the M25, particularly North and East London boroughs.
+                  </p>
+                </FadeIn>
+                <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 gap-3" staggerDelay={0.03} triggerOnScroll>
+                  {londonAreas.map((area) => (
+                    <StaggerItem key={area}>
+                      <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0.1 }}
+                        transition={{ duration: 0.3 }}
+                        className="flex items-center gap-2"
+                      >
+                        <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">{area}</span>
+                      </motion.div>
+                    </StaggerItem>
+                  ))}
+                </StaggerContainer>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -197,79 +218,112 @@ export default function AreasCovered() {
       <section className="py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-6">
-                Not Sure If We Cover Your Area?
-              </h2>
-              <p className="text-muted-foreground mb-6">
-                If your location isn&apos;t listed, don&apos;t worry. We may still be able to help.
-                Contact us with your postcode and we&apos;ll confirm if we can provide service to your area.
-              </p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
-                  <span className="text-muted-foreground">Quick response to coverage enquiries</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
-                  <span className="text-muted-foreground">Clear pricing including any travel costs</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
-                  <span className="text-muted-foreground">Emergency services may be available outside normal areas</span>
-                </li>
-              </ul>
-            </div>
-
-            <GlassCard className="p-8 text-center">
-              <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
-              <h3 className="font-heading text-xl font-bold text-foreground mb-4">
-                Check Your Coverage
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                Call us or use our booking form to check if we cover your area.
-              </p>
-              <div className="space-y-3">
-                <a href="tel:+44XXXXXXXXXX" className="block">
-                  <Button className="w-full bg-emergency text-emergency-foreground gap-2">
-                    <Phone className="w-4 h-4" />
-                    Call to Confirm
-                  </Button>
-                </a>
-                <Link href="/contact" className="block">
-                  <Button variant="outline" className="w-full gap-2">
-                    <Calendar className="w-4 h-4" />
-                    Book Online
-                  </Button>
-                </Link>
+            <ScrollReveal>
+              <div>
+                <SlideIn delay={0.1}>
+                  <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-6">
+                    Not Sure If We Cover Your Area?
+                  </h2>
+                </SlideIn>
+                <FadeIn delay={0.2}>
+                  <p className="text-muted-foreground mb-6">
+                    If your location isn&apos;t listed, don&apos;t worry. We may still be able to help.
+                    Contact us with your postcode and we&apos;ll confirm if we can provide service to your area.
+                  </p>
+                </FadeIn>
+                <StaggerContainer className="space-y-3 mb-8" staggerDelay={0.1}>
+                  {[
+                    "Quick response to coverage enquiries",
+                    "Clear pricing including any travel costs",
+                    "Emergency services may be available outside normal areas",
+                  ].map((item, index) => (
+                    <StaggerItem key={item}>
+                      <motion.li
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0.1 }}
+                        transition={{ delay: index * 0.1, duration: 0.3 }}
+                        className="flex items-start gap-3"
+                      >
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          whileInView={{ scale: 1 }}
+                          viewport={{ once: false }}
+                          transition={{ delay: index * 0.1 + 0.1, type: "spring", stiffness: 200 }}
+                        >
+                          <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
+                        </motion.div>
+                        <span className="text-muted-foreground">{item}</span>
+                      </motion.li>
+                    </StaggerItem>
+                  ))}
+                </StaggerContainer>
               </div>
-            </GlassCard>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <HoverScale>
+                <GlassCard className="p-8 text-center">
+                  <motion.div
+                    whileHover={{ rotate: 10, scale: 1.1 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
+                  </motion.div>
+                  <h3 className="font-heading text-xl font-bold text-foreground mb-4">
+                    Check Your Coverage
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    Call us or use our booking form to check if we cover your area.
+                  </p>
+                  <div className="space-y-3">
+                    <motion.a href={OFFICE_TEL} className="block" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                      <Button className="w-full bg-emergency text-emergency-foreground gap-2">
+                        <Phone className="w-4 h-4" />
+                        Call Office to Confirm
+                      </Button>
+                    </motion.a>
+                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                      <BookOnlineLink className="block">
+                        <Button variant="outline" className="w-full gap-2">
+                          <Calendar className="w-4 h-4" />
+                          Book Online
+                        </Button>
+                      </BookOnlineLink>
+                    </motion.div>
+                  </div>
+                </GlassCard>
+              </HoverScale>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4">
-            Serving Essex & Beyond
-          </h2>
-          <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-8">
-            With 24/7 emergency services and flexible scheduling, we&apos;re here when you need us.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+44XXXXXXXXXX">
-              <Button size="lg" className="bg-emergency text-emergency-foreground gap-2">
-                <Phone className="w-5 h-5" />
-                Call Now
-              </Button>
-            </a>
-            <Link href="/contact">
-              <Button size="lg" variant="secondary" className="gap-2">
-                <Calendar className="w-5 h-5" />
-                Book Online
-              </Button>
-            </Link>
-          </div>
+          <ScrollReveal>
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4">
+              Serving Essex & Beyond
+            </h2>
+            <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-8">
+              With 24/7 emergency services and flexible scheduling, we&apos;re here when you need us.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <CallButton />
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <BookOnlineLink>
+                  <Button size="lg" variant="secondary" className="gap-2">
+                    <Calendar className="w-5 h-5" />
+                    Book Online
+                  </Button>
+                </BookOnlineLink>
+              </motion.div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

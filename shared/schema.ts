@@ -54,6 +54,13 @@ export type Booking = typeof bookings.$inferSelect;
 export const services = [
   { id: "emergency-plumbing", name: "Emergency Plumbing", category: "emergency" },
   { id: "burst-pipes", name: "Leaking/Burst Pipes", category: "emergency" },
+  { id: "plumbing-repairs", name: "Plumbing Repairs", category: "plumbing" },
+  { id: "toilet-repairs", name: "Toilet Repairs", category: "plumbing" },
+  { id: "tap-repairs", name: "Tap Repairs", category: "plumbing" },
+  { id: "cold-water-tanks", name: "Cold Water Tanks", category: "plumbing" },
+  { id: "hot-water-cylinders", name: "Hot Water Cylinders", category: "plumbing" },
+  { id: "leaks", name: "Leaks", category: "plumbing" },
+  { id: "radiators", name: "Radiators", category: "plumbing" },
   { id: "drain-clearing", name: "Drain Clearing & Inspection", category: "drainage" },
   { id: "sink-unblocking", name: "Sink Unblocking", category: "drainage" },
   { id: "toilet-unblocking", name: "Toilet Unblocking", category: "drainage" },

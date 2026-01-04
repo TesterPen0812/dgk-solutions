@@ -18,6 +18,15 @@ import {
   Users,
   CheckCircle,
 } from "lucide-react";
+import { BookOnlineLink } from "@/components/BookOnlineLink";
+import { CallButton } from "@/components/CallButton";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { StaggerContainer } from "@/components/animations/StaggerContainer";
+import { StaggerItem } from "@/components/animations/StaggerItem";
+import { HoverScale } from "@/components/animations/HoverScale";
+import { SlideIn } from "@/components/animations/SlideIn";
+import { FadeIn } from "@/components/animations/FadeIn";
+import { motion } from "framer-motion";
 
 const sectorDetails = [
   {
@@ -72,8 +81,8 @@ const sectorDetails = [
   },
   {
     icon: Users,
-    title: "Management Properties",
-    description: "Comprehensive property management support with reliable scheduled and emergency services.",
+    title: "Commercial",
+    description: "Plumbing and drainage support for commercial properties with reliable scheduled and emergency services.",
   },
   {
     icon: Home,
@@ -84,172 +93,164 @@ const sectorDetails = [
 
 export default function SectorsServed() {
   useSEO({
-    title: "Sectors We Serve",
-    description: "Plumbing and drainage services for homeowners, businesses, restaurants, schools, hospitals, and more.",
+    title: "Sectors We Serve - Commercial & Residential Plumbing Services",
+    description: "Plumbing and drainage services for homeowners, businesses, restaurants, schools, hospitals, and more across Essex, M25 radius, Cambridge, and Luton. 30+ years combined experience.",
   });
 
   return (
     <div data-testid="page-sectors-served">
-      <section className="bg-gradient-to-br from-primary/10 via-background to-background py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6">
-              <Building2 className="w-10 h-10 text-primary" />
-              <span className="font-heading text-lg font-semibold text-primary">Sectors We Serve</span>
-            </div>
-
-            <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              Serving All Sectors
-            </h1>
-
-            <p className="text-lg text-muted-foreground mb-8">
-              DGK Solutions provides plumbing, drainage, and waste management services to a wide range of sectors.
-              From homeowners to hospitals, we have the experience and equipment to handle any requirement.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href="tel:+44XXXXXXXXXX">
-                <Button className="bg-emergency text-emergency-foreground gap-2" data-testid="button-call-sectors">
-                  <Phone className="w-4 h-4" />
-                  Call Now
-                </Button>
-              </a>
-              <Link href="/contact">
-                <Button variant="outline" className="gap-2" data-testid="button-book-sectors">
-                  <Calendar className="w-4 h-4" />
-                  Get in Touch
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Industries We Support
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              With 30+ years combined experience, our team understands the unique requirements of each sector.
-            </p>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <SlideIn delay={0.1}>
+                <h1 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                  Industries We Support
+                </h1>
+              </SlideIn>
+              <FadeIn delay={0.2}>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  With 30+ years combined experience, our team understands the unique requirements of each sector.
+                </p>
+              </FadeIn>
+            </div>
+          </ScrollReveal>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" staggerDelay={0.08} triggerOnScroll>
             {sectorDetails.map((sector) => (
-              <GlassCard key={sector.title} className="p-6">
-                <sector.icon className="w-10 h-10 text-primary mb-4" />
-                <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
-                  {sector.title}
-                </h3>
-                <p className="text-sm text-muted-foreground">{sector.description}</p>
-              </GlassCard>
+              <StaggerItem key={sector.title}>
+                <HoverScale>
+                  <GlassCard className="p-6">
+                    <motion.div
+                      whileHover={{ rotate: 10, scale: 1.1 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <sector.icon className="w-10 h-10 text-primary mb-4" />
+                    </motion.div>
+                    <h3 className="font-heading text-lg font-semibold text-foreground mb-2">
+                      {sector.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">{sector.description}</p>
+                  </GlassCard>
+                </HoverScale>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       <section className="py-16 lg:py-24 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-6">
-                Why Businesses Choose Us
-              </h2>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-4">
-                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">Flexible Scheduling</h3>
-                    <p className="text-sm text-muted-foreground">
-                      We work around your business hours to minimize disruption.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">24/7 Emergency Response</h3>
-                    <p className="text-sm text-muted-foreground">
-                      When emergencies happen, we&apos;re available around the clock.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">Certified & Qualified</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Our team holds industry certifications including PASMA, IPAF, and SSSTS.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-4">
-                  <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">Planned Maintenance</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Preventative maintenance programs to avoid costly emergencies.
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <GlassCard className="p-8">
-              <h3 className="font-heading text-xl font-bold text-foreground mb-6 text-center">
-                Certifications & Qualifications
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-4 bg-muted/50 rounded-md">
-                  <span className="font-heading text-lg font-bold text-foreground">NVQ Level 3</span>
-                  <p className="text-xs text-muted-foreground">Plumbing</p>
-                </div>
-                <div className="text-center p-4 bg-muted/50 rounded-md">
-                  <span className="font-heading text-lg font-bold text-foreground">PASMA</span>
-                  <p className="text-xs text-muted-foreground">Scaffolding</p>
-                </div>
-                <div className="text-center p-4 bg-muted/50 rounded-md">
-                  <span className="font-heading text-lg font-bold text-foreground">IPAF</span>
-                  <p className="text-xs text-muted-foreground">Access Platforms</p>
-                </div>
-                <div className="text-center p-4 bg-muted/50 rounded-md">
-                  <span className="font-heading text-lg font-bold text-foreground">SSSTS</span>
-                  <p className="text-xs text-muted-foreground">Site Safety</p>
-                </div>
-                <div className="text-center p-4 bg-muted/50 rounded-md col-span-2">
-                  <span className="font-heading text-lg font-bold text-foreground">STREETWORKS (NRSWA)</span>
-                  <p className="text-xs text-muted-foreground">Road Works Certified</p>
-                </div>
+            <ScrollReveal>
+              <div>
+                <SlideIn delay={0.1}>
+                  <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-6">
+                    Why Businesses Choose Us
+                  </h2>
+                </SlideIn>
+                <StaggerContainer className="space-y-4" staggerDelay={0.1}>
+                  {[
+                    {
+                      title: "Flexible Scheduling",
+                      description: "We work around your business hours to minimize disruption.",
+                    },
+                    {
+                      title: "24/7 Emergency Response",
+                      description: "When emergencies happen, we're available around the clock.",
+                    },
+                    {
+                      title: "Certified & Qualified",
+                      description: "Our team holds industry certifications including PASMA, IPAF, and SSSTS.",
+                    },
+                    {
+                      title: "Planned Maintenance",
+                      description: "Preventative maintenance programs to avoid costly emergencies.",
+                    },
+                  ].map((item, index) => (
+                    <StaggerItem key={item.title}>
+                      <motion.li
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0.1 }}
+                        transition={{ delay: index * 0.1, duration: 0.3 }}
+                        className="flex items-start gap-4"
+                      >
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          whileInView={{ scale: 1 }}
+                          viewport={{ once: false }}
+                          transition={{ delay: index * 0.1 + 0.1, type: "spring", stiffness: 200 }}
+                        >
+                          <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
+                        </motion.div>
+                        <div>
+                          <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+                          <p className="text-sm text-muted-foreground">{item.description}</p>
+                        </div>
+                      </motion.li>
+                    </StaggerItem>
+                  ))}
+                </StaggerContainer>
               </div>
-            </GlassCard>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <HoverScale>
+                <GlassCard className="p-8">
+                  <h3 className="font-heading text-xl font-bold text-foreground mb-6 text-center">
+                    Certifications & Qualifications
+                  </h3>
+                  <StaggerContainer className="grid grid-cols-2 gap-4" staggerDelay={0.05} triggerOnScroll>
+                    {[
+                      { name: "NVQ Level 3", desc: "Plumbing" },
+                      { name: "PASMA", desc: "Scaffolding" },
+                      { name: "IPAF", desc: "Access Platforms" },
+                      { name: "SSSTS", desc: "Site Safety" },
+                      { name: "STREETWORKS (NRSWA)", desc: "Road Works Certified", span: 2 },
+                    ].map((cert, index) => (
+                      <StaggerItem key={cert.name}>
+                        <HoverScale>
+                          <div className={`text-center p-4 bg-muted/50 rounded-md ${cert.span ? 'col-span-2' : ''}`}>
+                            <span className="font-heading text-lg font-bold text-foreground">{cert.name}</span>
+                            <p className="text-xs text-muted-foreground">{cert.desc}</p>
+                          </div>
+                        </HoverScale>
+                      </StaggerItem>
+                    ))}
+                  </StaggerContainer>
+                </GlassCard>
+              </HoverScale>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4">
-            Whatever Your Sector, We Can Help
-          </h2>
-          <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-8">
-            Get in touch to discuss your specific requirements and how we can support your business.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+44XXXXXXXXXX">
-              <Button size="lg" className="bg-emergency text-emergency-foreground gap-2">
-                <Phone className="w-5 h-5" />
-                Call Now
-              </Button>
-            </a>
-            <Link href="/contact">
-              <Button size="lg" variant="secondary" className="gap-2">
-                <Calendar className="w-5 h-5" />
-                Book Online
-              </Button>
-            </Link>
-          </div>
+          <ScrollReveal>
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4">
+              Whatever Your Sector, We Can Help
+            </h2>
+            <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-8">
+              Get in touch to discuss your specific requirements and how we can support your business.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <CallButton />
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <BookOnlineLink>
+                  <Button size="lg" variant="secondary" className="gap-2">
+                    <Calendar className="w-5 h-5" />
+                    Book Online
+                  </Button>
+                </BookOnlineLink>
+              </motion.div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

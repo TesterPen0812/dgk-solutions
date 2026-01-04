@@ -14,6 +14,8 @@ import {
   Wrench,
   Shield,
 } from "lucide-react";
+import { BookOnlineLink } from "@/components/BookOnlineLink";
+import { CallButton } from "@/components/CallButton";
 
 const teamMembers = [
   {
@@ -31,7 +33,7 @@ const teamMembers = [
     specialties: ["CCTV Surveys", "Drain Repairs", "Emergency Response"],
   },
   {
-    name: "Office Team",
+    name: "Carly",
     role: "Office & Finance Manager",
     experience: "Operations",
     description: "Managing bookings, customer communications, invoicing, and scheduling to ensure smooth service delivery.",
@@ -47,48 +49,13 @@ export default function About() {
 
   return (
     <div data-testid="page-about">
-      <section className="bg-gradient-to-br from-primary/10 via-background to-background py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6">
-              <Users className="w-10 h-10 text-primary" />
-              <span className="font-heading text-lg font-semibold text-primary">About Us</span>
-            </div>
-
-            <h1 className="font-heading text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              About DGK Solutions Ltd
-            </h1>
-
-            <p className="text-lg text-muted-foreground mb-8">
-              A professional plumbing, drainage, and waste management company based in Essex,
-              serving domestic and commercial clients across the M25 radius, Cambridge, and Luton.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href="tel:+44XXXXXXXXXX">
-                <Button className="bg-emergency text-emergency-foreground gap-2" data-testid="button-call-about">
-                  <Phone className="w-4 h-4" />
-                  Call Now
-                </Button>
-              </a>
-              <Link href="/contact">
-                <Button variant="outline" className="gap-2" data-testid="button-book-about">
-                  <Calendar className="w-4 h-4" />
-                  Get in Touch
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-6">
+              <h1 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-6">
                 Our Story
-              </h2>
+              </h1>
               <p className="text-muted-foreground mb-4">
                 DGK Solutions Ltd was established to provide reliable, professional plumbing and drainage services
                 to homes and businesses across Essex and the surrounding areas.
@@ -256,18 +223,13 @@ export default function About() {
             Get in touch to discuss your requirements or book a service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+44XXXXXXXXXX">
-              <Button size="lg" className="bg-emergency text-emergency-foreground gap-2">
-                <Phone className="w-5 h-5" />
-                Call Now
-              </Button>
-            </a>
-            <Link href="/contact">
+            <CallButton />
+            <BookOnlineLink>
               <Button size="lg" variant="secondary" className="gap-2">
                 <Calendar className="w-5 h-5" />
                 Book Online
               </Button>
-            </Link>
+            </BookOnlineLink>
           </div>
         </div>
       </section>
