@@ -19,7 +19,7 @@ export function FadeIn({
 }: FadeInProps) {
   const ref = useRef(null);
   const prefersReducedMotion = useReducedMotion();
-  const isInView = useInView(ref, { once: false, amount: 0.1 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   // If reduced motion is preferred, skip animation
   if (prefersReducedMotion) {

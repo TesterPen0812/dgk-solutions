@@ -214,16 +214,8 @@ export default function Home() {
                     </ul>
                   </div>
                 </GlassCard>
-                <motion.div
-                  animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl"
-                />
-                <motion.div
-                  animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
-                  transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-                  className="absolute -bottom-4 -left-4 w-32 h-32 bg-emergency/10 rounded-full blur-2xl"
-                />
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl opacity-30" />
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-emergency/10 rounded-full blur-2xl opacity-30" />
               </div>
             </ScrollReveal>
           </div>
