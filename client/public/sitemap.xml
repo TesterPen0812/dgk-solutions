@@ -2,57 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dgksolutions.co.uk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2025-01-04</lastmod>
   </url>
   <url>
     <loc>https://dgksolutions.co.uk/services</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2025-01-04</lastmod>
   </url>
   <url>
     <loc>https://dgksolutions.co.uk/emergency</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2025-01-04</lastmod>
   </url>
   <url>
     <loc>https://dgksolutions.co.uk/drainage</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-01-04</lastmod>
   </url>
   <url>
     <loc>https://dgksolutions.co.uk/drain-repairs</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-01-04</lastmod>
   </url>
   <url>
     <loc>https://dgksolutions.co.uk/tanker-waste</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-01-04</lastmod>
   </url>
   <url>
     <loc>https://dgksolutions.co.uk/sectors-served</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2025-01-04</lastmod>
   </url>
   <url>
     <loc>https://dgksolutions.co.uk/areas-covered</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2025-01-04</lastmod>
   </url>
   <url>
     <loc>https://dgksolutions.co.uk/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2025-01-04</lastmod>
   </url>
   <url>
     <loc>https://dgksolutions.co.uk/contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-01-04</lastmod>
   </url>
   <url>
     <loc>https://dgksolutions.co.uk/plumbing-repairs</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-01-04</lastmod>
   </url>
 </urlset>
