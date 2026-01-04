@@ -4,7 +4,7 @@ import { certifications } from "@shared/schema";
 import { motion } from "framer-motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { EMERGENCY_TEL, OFFICE_TEL } from "@/components/CallNumbers";
+import { OFFICE_TEL } from "@/components/CallNumbers";
 import { useTheme } from "@/components/ThemeProvider";
 
 export function Footer() {
@@ -108,14 +108,9 @@ export function Footer() {
                   className="flex items-start gap-2"
                 >
                   <Phone className="w-4 h-4 mt-0.5 text-primary" />
-              <div className="flex flex-col">
-                <a href={OFFICE_TEL} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Office / General: 01708 961700
-                </a>
-                <a href={EMERGENCY_TEL} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Emergency / Mobile: 07089 61700
-                </a>
-              </div>
+              <a href={OFFICE_TEL} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                01708 961700
+              </a>
                 </motion.li>
                 <motion.li 
                   initial={{ opacity: 0, x: -10 }}
