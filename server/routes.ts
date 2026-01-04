@@ -11,7 +11,7 @@ export async function registerRoutes(
   // 301 Permanent Redirect from OLD_DOMAIN (dgksolutions.ltd) to NEW_DOMAIN (dgksolutions.org)
   app.use((req, res, next) => {
     const host = req.get("host");
-    const OLD_DOMAIN = "dgksolutions.ltd";
+    const OLD_DOMAIN = "dkgsolutions.ltd";
     const NEW_DOMAIN = "dgksolutions.org";
 
     if (host && (host === OLD_DOMAIN || host === `www.${OLD_DOMAIN}`)) {
