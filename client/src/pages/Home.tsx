@@ -342,7 +342,7 @@ export default function Home() {
                   Certifications & Qualifications
                 </h2>
                 <p className="text-primary-foreground/80 mb-8">
-                  Our team holds industry-recognized certifications ensuring quality workmanship and compliance with all safety regulations.
+                  Our team holds industry-recognised certifications ensuring quality workmanship and compliance with all safety regulations.
                 </p>
                 <StaggerContainer className="flex flex-wrap gap-3" staggerDelay={0.05}>
                   {certifications.map((cert) => (

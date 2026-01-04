@@ -47,7 +47,7 @@ const sectorDetails = [
   {
     icon: UtensilsCrossed,
     title: "Restaurants",
-    description: "Specialized services including grease trap maintenance and emergency drain clearing for food service.",
+    description: "Specialised services including grease trap maintenance and emergency drain clearing for food service.",
   },
   {
     icon: GraduationCap,
@@ -165,7 +165,7 @@ export default function SectorsServed() {
                     },
                     {
                       title: "Planned Maintenance",
-                      description: "Preventative maintenance programs to avoid costly emergencies.",
+                      description: "Preventative maintenance programmes to avoid costly emergencies.",
                     },
                   ].map((item, index) => (
                     <StaggerItem key={item.title}>

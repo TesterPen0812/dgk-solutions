@@ -38,7 +38,7 @@ const repairServices = [
   {
     icon: Wrench,
     title: "Patch Repairs",
-    description: "Targeted repairs for localized damage without the need to reline the entire drain.",
+    description: "Targeted repairs for localised damage without the need to reline the entire drain.",
     benefits: ["Precise repairs", "Quick installation", "Minimal cost", "Effective solution"],
   },
   {
@@ -68,7 +68,7 @@ export default function DrainRepairs() {
               </SlideIn>
               <FadeIn delay={0.2}>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
-                  We use the most appropriate repair method for your situation, always prioritizing minimal disruption.
+                  We use the most appropriate repair method for your situation, always prioritising minimal disruption.
                 </p>
               </FadeIn>
             </div>
@@ -117,7 +117,7 @@ export default function DrainRepairs() {
                 </SlideIn>
                 <FadeIn delay={0.2}>
                   <p className="text-muted-foreground mb-6">
-                    No-dig technology has revolutionized drain repairs. Instead of excavating your garden, driveway, or
+                    No-dig technology has revolutionised drain repairs. Instead of excavating your garden, driveway, or
                     property, we repair pipes from the inside using advanced techniques.
                   </p>
                 </FadeIn>
