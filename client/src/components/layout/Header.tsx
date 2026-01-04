@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, AlertTriangle, Wrench, Droplets, Truck } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,6 +30,32 @@ const navItems = [
   { href: "/areas-covered", label: "Areas" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
+];
+
+const mobileServiceCategories = [
+  {
+    category: "Emergency",
+    icon: AlertTriangle,
+    links: [{ href: "/emergency", label: "24/7 Emergency Services" }],
+  },
+  {
+    category: "Plumbing",
+    icon: Wrench,
+    links: [{ href: "/plumbing-repairs", label: "Plumbing Repairs" }],
+  },
+  {
+    category: "Drainage",
+    icon: Droplets,
+    links: [
+      { href: "/drainage", label: "Drainage Services" },
+      { href: "/drain-repairs", label: "Drain Repairs" },
+    ],
+  },
+  {
+    category: "Tanker & Waste",
+    icon: Truck,
+    links: [{ href: "/tanker-waste", label: "Tanker & Waste Services" }],
+  },
 ];
 
 export function Header() {
@@ -135,61 +161,141 @@ export function Header() {
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:hidden py-3 sm:py-4 border-t border-border overflow-hidden"
+              className="lg:hidden py-4 border-t border-border overflow-hidden"
             >
-              <div className="flex flex-col gap-1 sm:gap-1.5">
-                {navItems.map((item, index) =>
-                  item.children ? (
+              <div className="flex flex-col">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0, duration: 0.3 }}
+                  className="px-4 pb-3"
+                >
+                  <Link href="/">
+                    <Button
+                      variant={location === "/" ? "secondary" : "ghost"}
+                      className="w-full justify-start min-h-10 px-4 py-2.5 text-base font-medium shadow-none active:shadow-none"
+                      onClick={() => setMobileMenuOpen(false)}
+                      data-testid="mobile-nav-home"
+                    >
+                      Home
+                    </Button>
+                  </Link>
+                </motion.div>
+
+                <div className="border-t border-border my-2" />
+
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05, duration: 0.3 }}
+                  className="px-4 py-2"
+                >
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+                    Our Services
+                  </h3>
+                </motion.div>
+
+                <div className="space-y-1 px-2">
+                  {mobileServiceCategories.map((category, catIndex) => (
                     <motion.div
-                      key={item.label}
+                      key={category.category}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05, duration: 0.3 }}
-                      className="space-y-1 sm:space-y-1.5"
+                      transition={{ delay: 0.1 + catIndex * 0.05, duration: 0.3 }}
+                      className="rounded-lg bg-muted/30 p-2"
                     >
-                      <span className="block px-4 py-2 sm:px-5 sm:py-2.5 text-sm sm:text-base font-medium text-muted-foreground">
-                        {item.label}
-                      </span>
-                      {item.children.map((child, childIndex) => (
-                        <motion.div
-                          key={child.href}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: (index * 0.05) + (childIndex * 0.03) + 0.1, duration: 0.3 }}
-                        >
-                          <Link href={child.href}>
+                      <div className="flex items-center gap-2 px-2 py-1.5 mb-1">
+                        <category.icon className="w-4 h-4 text-primary" />
+                        <span className="text-sm font-semibold text-foreground">
+                          {category.category}
+                        </span>
+                      </div>
+                      <div className="space-y-0.5">
+                        {category.links.map((link) => (
+                          <Link href={link.href} key={link.href}>
                             <Button
-                              variant={location === child.href ? "secondary" : "ghost"}
-                              className="w-full justify-start pl-6 sm:pl-8 min-h-9 sm:min-h-10 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base shadow-none active:shadow-none"
+                              variant={location === link.href ? "secondary" : "ghost"}
+                              className="w-full justify-start pl-8 min-h-9 px-3 py-2 text-sm shadow-none active:shadow-none"
                               onClick={() => setMobileMenuOpen(false)}
-                              data-testid={`mobile-nav-${child.label.toLowerCase().replace(/\s+/g, '-')}`}
+                              data-testid={`mobile-nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
                             >
-                              {child.label}
+                              {link.label}
                             </Button>
                           </Link>
-                        </motion.div>
-                      ))}
+                        ))}
+                      </div>
                     </motion.div>
-                  ) : (
+                  ))}
+                </div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3, duration: 0.3 }}
+                  className="px-4 pt-3"
+                >
+                  <Link href="/services">
+                    <Button
+                      variant="outline"
+                      className="w-full justify-center min-h-10 px-4 py-2.5 text-sm shadow-none active:shadow-none"
+                      onClick={() => setMobileMenuOpen(false)}
+                      data-testid="mobile-nav-all-services"
+                    >
+                      View All Services
+                    </Button>
+                  </Link>
+                </motion.div>
+
+                <div className="border-t border-border my-4" />
+
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.35, duration: 0.3 }}
+                  className="px-4 py-2"
+                >
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+                    Company
+                  </h3>
+                </motion.div>
+
+                <div className="grid grid-cols-2 gap-1 px-2">
+                  {[
+                    { href: "/sectors-served", label: "Sectors Served" },
+                    { href: "/areas-covered", label: "Areas Covered" },
+                    { href: "/about", label: "About Us" },
+                    { href: "/contact", label: "Contact" },
+                  ].map((item, index) => (
                     <motion.div
                       key={item.href}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05, duration: 0.3 }}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4 + index * 0.03, duration: 0.3 }}
                     >
                       <Link href={item.href}>
                         <Button
                           variant={location === item.href ? "secondary" : "ghost"}
-                          className="w-full justify-start min-h-9 sm:min-h-10 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base shadow-none active:shadow-none"
+                          className="w-full justify-start min-h-10 px-3 py-2 text-sm shadow-none active:shadow-none"
                           onClick={() => setMobileMenuOpen(false)}
-                          data-testid={`mobile-nav-${item.label.toLowerCase()}`}
+                          data-testid={`mobile-nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                         >
                           {item.label}
                         </Button>
                       </Link>
                     </motion.div>
-                  )
-                )}
+                  ))}
+                </div>
+
+                <div className="border-t border-border my-4" />
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.3 }}
+                  className="px-4 pb-2"
+                >
+                  <CallButton size="default" className="w-full" />
+                </motion.div>
               </div>
             </motion.nav>
           )}
