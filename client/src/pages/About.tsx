@@ -29,7 +29,7 @@ const teamMembers = [
     name: "Duncan",
     role: "Lead Engineer",
     experience: "Field Operations",
-    description: "Lead Engineer specializing in field operations, CCTV surveys, drain repairs, and emergency response.",
+    description: "Lead Engineer specialising in field operations, CCTV surveys, drain repairs, and emergency response.",
     specialties: ["CCTV Surveys", "Drain Repairs", "Emergency Response"],
   },
   {

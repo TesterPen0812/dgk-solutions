@@ -26,7 +26,7 @@ const repairServices = [
   {
     icon: CircleDot,
     title: "No-Dig Drain Repairs",
-    description: "Modern trenchless technology that repairs drains without excavation, minimizing disruption to your property.",
+    description: "Modern trenchless technology that repairs drains without excavation, minimising disruption to your property.",
     benefits: ["Minimal disruption", "Faster completion", "Cost-effective", "No garden damage"],
   },
   {
@@ -52,7 +52,7 @@ const repairServices = [
 export default function DrainRepairs() {
   useSEO({
     title: "Drain Repairs in Essex, London, Cambridge & Luton",
-    description: "Expert drain repair solutions including no-dig repairs, drain lining, and traditional excavations across Essex, M25 radius, Cambridge, and Luton. Minimize disruption with modern trenchless technology.",
+    description: "Expert drain repair solutions including no-dig repairs, drain lining, and traditional excavations across Essex, M25 radius, Cambridge, and Luton. Minimise disruption with modern trenchless technology.",
   });
 
   return (

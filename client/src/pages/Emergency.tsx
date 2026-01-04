@@ -26,7 +26,7 @@ import { motion } from "framer-motion";
 const emergencyServices = [
   {
     title: "Burst Pipes",
-    description: "Immediate response for burst or leaking pipes to minimize water damage.",
+    description: "Immediate response for burst or leaking pipes to minimise water damage.",
   },
   {
     title: "Blocked Drains",

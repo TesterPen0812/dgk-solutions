@@ -153,7 +153,7 @@ export default function SectorsServed() {
                   {[
                     {
                       title: "Flexible Scheduling",
-                      description: "We work around your business hours to minimize disruption.",
+                      description: "We work around your business hours to minimise disruption.",
                     },
                     {
                       title: "24/7 Emergency Response",
