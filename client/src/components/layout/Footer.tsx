@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, CheckCircle } from "lucide-react";
 import { certifications } from "@shared/schema";
 import { motion } from "framer-motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -49,6 +49,7 @@ export function Footer() {
               <ul className="space-y-2">
                 {[
                   { href: "/emergency", label: "Emergency Plumbing" },
+                  { href: "/plumbing-repairs", label: "Plumbing Repairs" },
                   { href: "/drainage", label: "Drainage Services" },
                   { href: "/drain-repairs", label: "Drain Repairs" },
                   { href: "/tanker-waste", label: "Tanker & Waste" },
@@ -120,8 +121,8 @@ export function Footer() {
                   className="flex items-start gap-2"
                 >
                   <Mail className="w-4 h-4 mt-0.5 text-primary" />
-                  <a href="mailto:info@dgksolutions.org" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    info@dgksolutions.org
+                  <a href="mailto:info@dgksolutions.co.uk" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    info@dgksolutions.co.uk
                   </a>
                 </motion.li>
                 <motion.li 
@@ -164,6 +165,10 @@ export function Footer() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
             <p>&copy; {new Date().getFullYear()} DGK Solutions Ltd. All rights reserved.</p>
             <p>Trading for 2 years | 30+ years combined experience</p>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-primary" />
+              <span>Fully Insured – Public Liability & Professional Indemnity Insurance</span>
+            </div>
           </div>
         </motion.div>
       </div>

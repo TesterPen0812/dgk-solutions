@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 import { BookOnlineLink } from "@/components/BookOnlineLink";
 import { CallButton } from "@/components/CallButton";
-import { PlumbingRepairsSection } from "@/components/PlumbingRepairsSection";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { StaggerContainer } from "@/components/animations/StaggerContainer";
 import { StaggerItem } from "@/components/animations/StaggerItem";
@@ -157,8 +156,6 @@ export default function Services() {
           </div>
         </section>
       ))}
-
-      <PlumbingRepairsSection />
 
       <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

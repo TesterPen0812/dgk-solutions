@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -34,8 +34,15 @@ const navItems = [
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [location] = useLocation();
   const { theme } = useTheme();
+
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      setMobileServicesOpen(false);
+    }
+  }, [mobileMenuOpen]);
 
   return (
     <motion.header 
@@ -137,7 +144,7 @@ export function Header() {
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="lg:hidden py-3 sm:py-4 border-t border-border overflow-hidden"
             >
-              <div className="flex flex-col gap-1 sm:gap-1.5">
+              <div className="flex flex-col gap-2 sm:gap-2.5">
                 {navItems.map((item, index) =>
                   item.children ? (
                     <motion.div
@@ -145,30 +152,86 @@ export function Header() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05, duration: 0.3 }}
-                      className="space-y-1 sm:space-y-1.5"
+                      className="space-y-1 sm:space-y-2"
                     >
-                      <span className="block px-4 py-2 sm:px-5 sm:py-2.5 text-sm sm:text-base font-medium text-muted-foreground">
+                      <button
+                        type="button"
+                        onClick={() => setMobileServicesOpen((prev) => !prev)}
+                        className="w-full flex items-center justify-between px-4 py-2 sm:px-5 sm:py-2.5 text-sm sm:text-base font-semibold text-foreground rounded-md bg-muted/40 border border-border/60"
+                        aria-expanded={mobileServicesOpen}
+                        aria-controls="mobile-services-menu"
+                      >
                         {item.label}
-                      </span>
-                      {item.children.map((child, childIndex) => (
-                        <motion.div
-                          key={child.href}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: (index * 0.05) + (childIndex * 0.03) + 0.1, duration: 0.3 }}
-                        >
-                          <Link href={child.href}>
-                            <Button
-                              variant={location === child.href ? "secondary" : "ghost"}
-                              className="w-full justify-start pl-6 sm:pl-8 min-h-9 sm:min-h-10 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base shadow-none active:shadow-none"
-                              onClick={() => setMobileMenuOpen(false)}
-                              data-testid={`mobile-nav-${child.label.toLowerCase().replace(/\s+/g, '-')}`}
-                            >
-                              {child.label}
-                            </Button>
-                          </Link>
-                        </motion.div>
-                      ))}
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`}
+                          aria-hidden="true"
+                        />
+                      </button>
+                      <AnimatePresence initial={false}>
+                        {mobileServicesOpen && (
+                          <motion.div
+                            id="mobile-services-menu"
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                            className="overflow-hidden"
+                          >
+                            <div className="mx-4 sm:mx-5 mt-2 rounded-lg border border-border/60 bg-muted/40 px-3 py-3 sm:px-4 sm:py-4 space-y-3 sm:space-y-4">
+                              {item.children
+                                .filter((child) => child.href !== "/services")
+                                .map((child, childIndex) => (
+                                  <motion.div
+                                    key={child.href}
+                                    initial={{ opacity: 0, x: -12 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: childIndex * 0.05 + 0.05, duration: 0.2 }}
+                                  >
+                                    <Link href={child.href}>
+                                      <Button
+                                        variant={location === child.href ? "secondary" : "ghost"}
+                                        className="w-full justify-start min-h-9 sm:min-h-10 px-3 sm:px-4 py-2 sm:py-2.5 text-sm sm:text-base shadow-none active:shadow-none"
+                                        onClick={() => {
+                                          setMobileMenuOpen(false);
+                                          setMobileServicesOpen(false);
+                                        }}
+                                        data-testid={`mobile-nav-${child.label.toLowerCase().replace(/\s+/g, "-")}`}
+                                      >
+                                        {child.label}
+                                      </Button>
+                                    </Link>
+                                    {childIndex < item.children.filter((c) => c.href !== "/services").length - 1 && (
+                                      <div className="h-px bg-border/60 mt-2" />
+                                    )}
+                                  </motion.div>
+                                ))}
+                              <motion.div
+                                initial={{ opacity: 0, x: -12 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.3, duration: 0.2 }}
+                              >
+                                {item.children
+                                  .filter((child) => child.href === "/services")
+                                  .map((child) => (
+                                    <Link key={child.href} href={child.href}>
+                                      <Button
+                                        variant={location === child.href ? "secondary" : "outline"}
+                                        className="w-full justify-center min-h-10 sm:min-h-11 px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base shadow-none active:shadow-none"
+                                        onClick={() => {
+                                          setMobileMenuOpen(false);
+                                          setMobileServicesOpen(false);
+                                        }}
+                                        data-testid={`mobile-nav-${child.label.toLowerCase().replace(/\s+/g, "-")}`}
+                                      >
+                                        {child.label}
+                                      </Button>
+                                    </Link>
+                                  ))}
+                              </motion.div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </motion.div>
                   ) : (
                     <motion.div

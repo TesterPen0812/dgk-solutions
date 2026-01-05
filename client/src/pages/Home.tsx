@@ -192,6 +192,7 @@ export default function Home() {
                         "Trading for 2 years with 30+ years combined experience",
                         "24/7 emergency call-outs, 365 days a year",
                         "Domestic & commercial specialists",
+                        "Fully Insured – Public Liability & Professional Indemnity Insurance",
                         "NVQ Level 3, PASMA, IPAF certified",
                       ].map((text, index) => (
                         <motion.li

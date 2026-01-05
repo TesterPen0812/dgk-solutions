@@ -26,7 +26,7 @@ export function StructuredData() {
         "+441708961700",
         "+44708961700"
       ],
-      "email": "info@dgksolutions.org",
+      "email": "info@dgksolutions.co.uk",
       "address": {
         "@type": "PostalAddress",
         "addressRegion": "Essex",

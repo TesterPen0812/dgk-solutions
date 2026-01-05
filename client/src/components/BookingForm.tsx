@@ -515,6 +515,11 @@ export function BookingForm() {
                 </motion.p>
               )}
             </AnimatePresence>
+
+            <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+              <CheckCircle className="w-4 h-4 text-primary" />
+              <span>Fully Insured – Public Liability & Professional Indemnity Insurance</span>
+            </div>
           </form>
         </Form>
       </GlassCard>
